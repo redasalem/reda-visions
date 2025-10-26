@@ -8,77 +8,75 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Light mode - Clean white with soft shadows */
-    --background: 0 0% 100%;
-    --foreground: 220 15% 15%;
+    /* Light mode - Clean slate #f8fafc */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 220 70% 12%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 220 15% 15%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 190 100% 50%;
-    --accent-foreground: 220 70% 5%;
+    --accent: 235 100% 66%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 190 100% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 235 100% 66%;
 
     --radius: 0.75rem;
 
-    /* Neon glow colors */
-    --neon-cyan: 190 100% 50%;
-    --neon-blue: 220 100% 60%;
-    --glass-bg: 0 0% 100% / 0.05;
-    --glass-border: 0 0% 100% / 0.1;
+    /* Glassmorphism - light mode */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 235 100% 66% / 0.15;
   }
 
   .dark {
-    /* Deep blue dark mode - NOT pure black */
-    --background: 220 70% 5%;
-    --foreground: 0 0% 98%;
+    /* Deep Navy #0b0f19 - NOT pure black */
+    --background: 225 45% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 60% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 225 40% 10%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 60% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 225 40% 10%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 220 70% 5%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 225 45% 6%;
 
-    --secondary: 220 50% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 225 35% 14%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 50% 12%;
-    --muted-foreground: 220 15% 65%;
+    --muted: 225 35% 14%;
+    --muted-foreground: 217 19% 60%;
 
-    --accent: 190 100% 50%;
-    --accent-foreground: 220 70% 5%;
+    --accent: 235 100% 66%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 51%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 50% 15%;
-    --input: 220 50% 15%;
-    --ring: 190 100% 50%;
+    --border: 225 35% 18%;
+    --input: 225 35% 18%;
+    --ring: 235 100% 66%;
 
-    /* Glassmorphism */
-    --glass-bg: 220 50% 15% / 0.4;
-    --glass-border: 190 100% 50% / 0.2;
+    /* Glassmorphism - dark mode */
+    --glass-bg: 225 40% 12% / 0.5;
+    --glass-border: 235 100% 66% / 0.2;
   }
 }
 
@@ -98,15 +96,16 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/40 backdrop-blur-xl border border-white/10;
+    background: hsl(var(--glass-bg));
+    @apply backdrop-blur-xl border border-[hsl(var(--glass-border))];
   }
 
   .neon-glow {
-    @apply shadow-[0_0_20px_rgba(34,211,238,0.3)];
+    box-shadow: 0 0 30px hsl(var(--accent) / 0.4), 0 0 60px hsl(var(--accent) / 0.2);
   }
 
   .neon-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-blue-400;
   }
 
   .section-padding {
